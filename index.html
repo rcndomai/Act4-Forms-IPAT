@@ -1,0 +1,141 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Car Rental Reservation System</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="script.js" defer></script>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Car Rental Reservation System</h1>
+
+            <form id="rentalForm" novalidate>
+                <section class="form-section">
+                    <h2>Customer Information</h2>
+
+                    <div class="field-row">
+                        <label for="customerId">Customer ID:</label>
+                        <input type="text" id="customerId" name="customerId" required>
+                    </div>
+                    <div class="field-row">
+                        <label for="firstname">First Name:</label>
+                        <input type="text" id="firstname" name="firstname" required>
+                    </div>
+                    <div class="field-row">
+                        <label for="lastname">Last Name:</label>
+                        <input type="text" id="lastname" name="lastname" required>
+                    </div>
+                    <div class="field-row">
+                        <label for="email">Email Address:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="field-row">
+                        <label for="phone">Contact Number:</label>
+                        <input type="tel" id="phone" name="phone" inputmode="numeric" pattern="[0-9]{11}" maxlength="11" placeholder="11-digit number" required>
+                    </div>
+                    <div class="field-row">
+                        <label for="license">Driver's License No.:</label>
+                        <input type="text" id="license" name="license" required>
+                    </div>
+                </section>
+
+                <section class="form-section">
+                    <h2>Rental Information</h2>
+
+                    <div class="field-row">
+                        <label for="carType">Select Car:</label>
+                        <select id="carType" name="carType" required>
+                            <option value="">Select a car</option>
+                            <option value="Economy Car" data-rate="1500">Economy Car - ₱1,500/day</option>
+                            <option value="Sedan" data-rate="2000">Sedan - ₱2,000/day</option>
+                            <option value="SUV" data-rate="3000">SUV - ₱3,000/day</option>
+                            <option value="Van" data-rate="3500">Van - ₱3,500/day</option>
+                            <option value="Luxury Car" data-rate="5000">Luxury Car - ₱5,000/day</option>
+                        </select>
+                    </div>
+                    <div class="field-row">
+                        <label for="pickupDate">Pick-up Date:</label>
+                        <input type="date" id="pickupDate" name="pickupDate" required>
+                    </div>
+                    <div class="field-row">
+                        <label for="returnDate">Return Date:</label>
+                        <input type="date" id="returnDate" name="returnDate" required>
+                    </div>
+                    <div class="field-row">
+                        <label for="pickupLocation">Pick-up Location:</label>
+                        <select id="pickupLocation" name="pickupLocation" required>
+                            <option value="">Select a location</option>
+                            <option>Main Branch</option>
+                            <option>City Branch</option>
+                            <option>Airport Branch</option>
+                        </select>
+                    </div>
+                    <div class="field-row">
+                        <label for="returnLocation">Return Location:</label>
+                        <select id="returnLocation" name="returnLocation" required>
+                            <option value="">Select a location</option>
+                            <option>Main Branch</option>
+                            <option>City Branch</option>
+                            <option>Airport Branch</option>
+                        </select>
+                    </div>
+                </section>
+
+                <section class="form-section">
+                    <h2>Additional Services</h2>
+                    <div class="radio-group service-group">
+                        <label><input type="checkbox" name="service" value="gps" data-label="GPS Navigation" data-rate="300"> GPS Navigation - ₱300/day</label>
+                        <label><input type="checkbox" name="service" value="childSeat" data-label="Child Safety Seat" data-rate="200"> Child Safety Seat - ₱200/day</label>
+                        <label><input type="checkbox" name="service" value="driver" data-label="Additional Driver" data-rate="500"> Additional Driver - ₱500 fixed fee</label>
+                        <label><input type="checkbox" name="service" value="insurance" data-label="Insurance" data-rate="500"> Insurance - ₱500/day</label>
+                    </div>
+                </section>
+
+                <section class="form-section">
+                    <h2>Payment Information</h2>
+                    <div class="field-row">
+                        <label for="amountPaid">Amount Paid (₱):</label>
+                        <input type="number" id="amountPaid" name="amountPaid" min="0" step="0.01" placeholder="Enter amount paid" required>
+                    </div>
+                </section>
+
+                <p id="formMessage" class="form-message" role="alert"></p>
+                <div class="button-group">
+                    <button type="submit" id="register">Calculate Rental</button>
+                    <button type="reset" id="clearform" class="secondary">Clear Form</button>
+                </div>
+            </form>
+
+            <section id="summary" class="summary hidden" aria-live="polite">
+                <h2>Rental Reservation Summary</h2>
+                <table class="summary-table">
+                    <tbody>
+                        <tr><th>Customer ID</th><td id="summaryCustomerId"></td></tr>
+                        <tr><th>Customer Name</th><td id="summaryName"></td></tr>
+                        <tr><th>Driver's License</th><td id="summaryLicense"></td></tr>
+                        <tr><th>Email</th><td id="summaryEmail"></td></tr>
+                        <tr><th>Contact Number</th><td id="summaryPhone"></td></tr>
+                        <tr><th>Car</th><td id="summaryCar"></td></tr>
+                        <tr><th>Daily Rate</th><td id="summaryRate"></td></tr>
+                        <tr><th>Pick-up Date</th><td id="summaryPickupDate"></td></tr>
+                        <tr><th>Return Date</th><td id="summaryReturnDate"></td></tr>
+                        <tr><th>Rental Days</th><td id="summaryDays"></td></tr>
+                        <tr><th>Pick-up Location</th><td id="summaryPickupLocation"></td></tr>
+                        <tr><th>Return Location</th><td id="summaryReturnLocation"></td></tr>
+                        <tr><th>Additional Services</th><td id="summaryServices"></td></tr>
+                        <tr><th>Car Rental Cost</th><td id="summaryCarCost"></td></tr>
+                        <tr><th>Service Cost</th><td id="summaryServiceCost"></td></tr>
+                        <tr><th>Discount</th><td id="summaryDiscount"></td></tr>
+                        <tr><th>Tax (12%)</th><td id="summaryTax"></td></tr>
+                        <tr><th>Grand Total</th><td id="summaryTotal"></td></tr>
+                        <tr><th>Amount Paid</th><td id="summaryPaid"></td></tr>
+                        <tr><th>Balance / Change</th><td id="summaryBalance"></td></tr>
+                    </tbody>
+                </table>
+                <div class="success-note">Car rental reservation calculated successfully!</div>
+            </section>
+        </div>
+    </body>
+    </html>

@@ -1,0 +1,250 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #fff1e6, #fff8ef);
+    margin: 0;
+    padding: 40px 20px;
+    color: #1f2937;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+    color: #c2410c;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #c2410c;
+    margin: 0 0 18px;
+}
+
+.form-section,
+.summary {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 25px 30px;
+    box-shadow: 0 10px 25px rgba(194, 65, 12, 0.08);
+    margin-bottom: 25px;
+}
+
+.field-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 18px;
+}
+
+label {
+    width: 180px;
+    font-weight: 600;
+    color: #374151;
+}
+
+input, textarea, select {
+    flex: 1;
+    min-width: 0;
+    padding: 10px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    font-size: 15px;
+    background: #f9fafb;
+}
+
+input:focus, textarea:focus, select:focus {
+    outline: 2px solid rgba(234, 88, 12, 0.2);
+    border-color: #ea580c;
+}
+
+input.invalid, textarea.invalid, select.invalid {
+    border: 2px solid #dc2626;
+    background: #fff5f5;
+}
+
+.radio-group {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    flex: 1;
+}
+
+.radio-group label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: auto;
+    font-weight: 500;
+}
+
+input[type="radio"] {
+    width: auto;
+    accent-color: #ea580c;
+    margin: 0;
+}
+
+input[type="radio"].invalid {
+    outline: 2px solid #dc2626;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin: 20px auto;
+    flex-wrap: wrap;
+}
+
+button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+#register {
+    background: #ea580c;
+    color: #ffffff;
+}
+
+#register:hover {
+    background: #c2410c;
+}
+
+#clearform {
+    background: #9ca3af;
+    color: #ffffff;
+}
+
+#clearform:hover {
+    background: #6b7280;
+}
+
+.summary {
+    display: block;
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    background: #f5f5f5;
+    border: 2px solid #ea580c;
+    border-radius: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.summary.hidden {
+    display: none;
+}
+
+.summary h2 {
+    margin: 0;
+    padding: 14px 20px 12px;
+    text-align: center;
+    font-size: 18px;
+    border-bottom: 2px solid #ea580c;
+    background: #f5f5f5;
+    color: #111827;
+}
+
+.summary-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #f5f5f5;
+    table-layout: fixed;
+}
+
+.summary-table th,
+.summary-table td {
+    border-bottom: 1px solid #d5d5d5;
+    padding: 10px 12px;
+    text-align: left;
+    vertical-align: top;
+    font-size: 14px;
+}
+
+.summary-table th {
+    width: 180px;
+    font-weight: 700;
+    color: #111827;
+    background: #f5f5f5;
+}
+
+.summary-table td {
+    color: #111827;
+    background: #ffffff;
+}
+
+.success-note {
+    text-align: center;
+    font-weight: 600;
+    color: #c2410c;
+    padding: 16px 10px 18px;
+    background: #f5f5f5;
+}
+
+@media (max-width: 600px) {
+    .field-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    label {
+        width: 100%;
+    }
+
+    .button-group {
+        flex-direction: column;
+    }
+
+    .form-section,
+    .summary {
+        padding: 20px 16px;
+    }
+
+    .summary-table th {
+        width: 150px;
+    }
+}
+
+.service-group {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.service-group label {
+    width: auto;
+}
+
+input[type="checkbox"] {
+    width: auto;
+    flex: 0 0 auto;
+    accent-color: #ea580c;
+}
+
+.form-message {
+    min-height: 1.25em;
+    margin: 0;
+    color: #b91c1c;
+    text-align: center;
+    font-weight: 600;
+}
+
+.form-message:empty {
+    display: none;
+}
